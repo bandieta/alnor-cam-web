@@ -1,0 +1,22 @@
+/* ShapeList.css */
+
+/* Remove list marker (dot) */
+.shape-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style for the buttons */
+.shape-button {
+  width: 200px; /* Adjust the width as needed */
+  padding: 10px; /* Adjust the padding as needed */
+  margin: 5px; /* Add margin for spacing between buttons */
+  border: 1px solid #ccc; /* Add a border for button appearance */
+  text-align: left; /* Align text to the left */
+  background-color: #f0f0f0; /* Background color for buttons */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.shape-button:hover {
+  background-color: #e0e0e0; /* Change background color on hover */
+}
