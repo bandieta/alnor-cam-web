@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import data from './ShapesList.json'; // Adjust the path as needed
 import './ShapeList.css';
 
-function ShapeList() {
+function ShapeList({selectedShape, setSelectedShape}) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -16,8 +16,10 @@ function ShapeList() {
       <ul className="shape-list">
         {list.map((shape, index) => (
           <li key={index}>
-             <button className="shape-button">
-              <strong>{shape.symbol}</strong> {shape.name}
+             <button className="shape-button" onClick={() => setSelectedShape(shape.symbol)}>
+              <strong>
+                {shape.symbol === selectedShape ? '['+shape.symbol+']' : shape.symbol}
+                </strong> {shape.name}
             </button>
           </li>
         ))}
