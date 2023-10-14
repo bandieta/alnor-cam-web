@@ -1,0 +1,48 @@
+[
+  {
+    "id": "N-1",
+    "name": "QDa",
+    "quantity": "5",
+    "remarks": "",
+    "dimensions": {
+      "a": "400",
+      "b": "300",
+      "L": "1000"
+    },
+    "material": {
+      "steel": "0.6",
+      "type": "Galvanized sheet",
+      "pressure": "Low pressure",
+      "grade": "A",
+      "standard": "Standard",
+      "FrmIn": "P20",
+      "FrmOut": "P20",
+      "FrmoutFall": "P20"
+    }
+  },
+  {
+    "id": "N-2",
+    "name": "QPR6a",
+    "quantity": "5",
+    "remarks": "",
+    "dimensions": {
+      "a": "200",
+      "b": "200",
+      "c": "400",
+      "d": "400",
+      "m": "50",
+      "h": "50",
+      "L": "1000"
+    },
+    "material": {
+      "steel": "0.6",
+      "type": "Galvanized sheet",
+      "pressure": "Low pressure",
+      "grade": "A",
+      "standard": "Standard",
+      "FrmIn": "P20",
+      "FrmOut": "P20",
+      "FrmoutFall": "P20"
+    }
+  }
+]
