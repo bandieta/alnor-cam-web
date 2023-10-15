@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function ShapesDimensionsEditor({selectedShape}) {
-
-  const [dimensions, setDimensions] = useState({});
+function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions}) {
   const dimensionLabels = getDimensionLabels(selectedShape);
 
   const handleDimensionChange = (key, value) => {

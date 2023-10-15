@@ -6,6 +6,7 @@ import "./MainPanel.css"
 export default function MainPanel(){
 
     const [selectedShape, setSelectedShape] = useState("QDa");
+    const [dimensions, setDimensions] = useState({});
 
     useEffect(() => {
         // Use the data imported from the JSON file
@@ -22,9 +23,11 @@ export default function MainPanel(){
             <div class="left-menu"> 
                 <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>  
             </div>
-            <div class="content"></div>
-                <ShapesDimensionsEditor selectedShape={selectedShape}/>
-            </div>
+            <div class="content">
+                <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions}/>
+                </div>
+        </div>
+            
         </div>
 
 }

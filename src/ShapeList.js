@@ -12,7 +12,7 @@ function ShapeList({selectedShape, setSelectedShape}) {
 
   return (
     <div>
-      <h1>Shape List</h1>
+
       <ul className="shape-list">
         {list.map((shape, index) => (
           <li key={index}>
