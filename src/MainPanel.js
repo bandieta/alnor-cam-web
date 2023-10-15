@@ -5,7 +5,7 @@ import "./MainPanel.css"
 
 export default function MainPanel(){
 
-    const [selectedShape, setSelectedShape] = useState(true);
+    const [selectedShape, setSelectedShape] = useState("QDa");
 
     useEffect(() => {
         // Use the data imported from the JSON file
