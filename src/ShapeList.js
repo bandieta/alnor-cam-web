@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import data from './ShapesList.json'; // Adjust the path as needed
+import data from './ShapesList.json';
 import './ShapeList.css';
 
 function ShapeList({selectedShape, setSelectedShape}) {
