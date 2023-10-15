@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import "./shapesDimensions.css"
 
 function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions}) {
   const dimensionLabels = getDimensionLabels(selectedShape);
@@ -18,7 +19,7 @@ function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions}) {
 
 function DimensionInput({ label, value, onChange }) {
   return (
-    <div>
+    <div className="dimension-input">
       <label>{label}: </label>
       <input value={value} onChange={(e) => onChange(e.target.value)} />
     </div>
