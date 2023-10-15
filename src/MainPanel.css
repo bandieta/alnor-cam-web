@@ -18,3 +18,20 @@
     background-color: #f2f2f2;
     padding: 20px;
 }
+
+/* Add this to your CSS file */
+.order-list-item {
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .order-list-item button {
+    background-color: #ff0000; /* Customize the button style */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

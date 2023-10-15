@@ -29,6 +29,11 @@ export default function MainPanel(){
         forceRerender();
         setDimensions([]);
     }
+
+    function handleDeleteFromBucket(index) {
+        const updatedOrderList = orderList.filter((_, i) => i !== index);
+        setOrderList(updatedOrderList);
+      }
     
 
     return <div>
@@ -48,12 +53,12 @@ export default function MainPanel(){
                 <ul>
                     {orderList.map((item, index) => ( 
             
-                    <li key={index}>
+                    <li key={index} className="order-list-item">
                         Shape: {item.shape}
                   
                             {Object.keys(item.dimensions).map((key) => (<label> {key}: {item.dimensions[key]} </label> ))}
                       
-                        <button> x </button>
+                            <button onClick={() => handleDeleteFromBucket(index)}>x</button>
                     </li>
                     ))}
                 </ul>
