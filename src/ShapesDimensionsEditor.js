@@ -14,17 +14,14 @@ function ShapesDimensionsEditor({selectedShape}) {
   };
 
   return (
-    <div>
-
        <DimensionsEditor title={`${selectedShape} Dimensions`} dimensions={dimensions} handleDimensionChange={handleDimensionChange} dimensionLabels={dimensionLabels} />
-    </div>
   );
 }
 
 function DimensionInput({ label, value, onChange }) {
   return (
     <div>
-      <label>{label}:</label>
+      <label>{label}: </label>
       <input value={value} onChange={(e) => onChange(e.target.value)} />
     </div>
   );
