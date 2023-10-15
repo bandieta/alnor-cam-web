@@ -16,16 +16,30 @@ function ShapeList({selectedShape, setSelectedShape}) {
       <ul className="shape-list">
         {list.map((shape, index) => (
           <li key={index}>
-             <button className="shape-button" onClick={() => setSelectedShape(shape.symbol)}>
-              <strong>
-                {shape.symbol === selectedShape ? '['+shape.symbol+']' : shape.symbol}
-                </strong> {shape.name}
-            </button>
+            <ShapeElement 
+              shape={shape} 
+              symbol={shape.symbol} 
+              setSelectedShape={setSelectedShape} 
+              selectedShape={selectedShape}
+            /> 
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
+function ShapeElement({shape, symbol, setSelectedShape, selectedShape}) {
+  return (
+    <div className="shape-element">
+        <button className="shape-button" onClick={() => setSelectedShape(shape.symbol)}>
+
+          <strong>
+              {symbol === selectedShape ? '['+symbol+']' : symbol}
+          </strong> {shape.name}
+        </button>
+    </div>
+  );
+} 
 
 export default ShapeList;

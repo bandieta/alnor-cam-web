@@ -1,5 +1,7 @@
 import ShapeList from "./ShapeList";
 import React, { useEffect, useState } from 'react';
+import ShapesDimensionsEditor from "./ShapesDimensionsEditor";
+import "./MainPanel.css"
 
 export default function MainPanel(){
 
@@ -16,10 +18,15 @@ export default function MainPanel(){
 
     return <div>
         <h1>Alnor Cam</h1>
+        <div class="container">
+            <div class="left-menu"> 
+                <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>  
+            </div>
+            <div class="content"></div>
+                <ShapesDimensionsEditor selectedShape={selectedShape}/>
+            </div>
+        </div>
 
-        <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>  
-        
-    </div>
 }
 
 

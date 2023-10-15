@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    align-items: flex-start; /* Align items at the top of the container */
+    height: 100vh; /* 100% of the viewport height */
+}
+
+.left-menu {
+    flex: 1; /* Allow the left menu to grow and take 30% of the container width */
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.content {
+    flex: 2; /* Allow the content area to grow and take 70% of the container width */
+    background-color: #f2f2f2;
+    padding: 20px;
+}
