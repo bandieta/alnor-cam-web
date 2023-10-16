@@ -2,6 +2,7 @@ import ShapeList from "./ShapeList";
 import React, { useEffect, useState } from 'react';
 import ShapesDimensionsEditor from "./ShapesDimensionsEditor";
 import "./MainPanel.css"
+import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
 
 export default function MainPanel(){
 
@@ -43,6 +44,7 @@ export default function MainPanel(){
                 <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>  
             </div>
             <div class="content">
+                <QDaTechnicalDrawing a={100} b={60} L={40} />
                 <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
                 <button onClick={handleAddToBucket}> add </button>               
             

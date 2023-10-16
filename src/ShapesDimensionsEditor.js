@@ -1,7 +1,6 @@
 import React from 'react';
 import "./shapesDimensions.css"
 import shapeDimensions from './shapeDimensions.json'; // Import the JSON file
-import { useState } from 'react';
 
 function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions, rerenderKey}) {
   const dimensionLabels = getDimensionLabels(selectedShape);
