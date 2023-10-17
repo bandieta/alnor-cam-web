@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ShapesDimensionsEditor from "./ShapesDimensionsEditor";
 import "./MainPanel.css"
 import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
+import QDa3DDrawing from "./QDa3DDrawing";
 
 export default function MainPanel(){
 
@@ -39,12 +40,19 @@ export default function MainPanel(){
 
     return <div>
         <h1>Alnor Cam</h1>
+        
         <div class="container">
             <div class="left-menu"> 
                 <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>  
             </div>
             <div class="content">
+                <QDa3DDrawing a={100} b={60} L={40} />
+            </div>"
+            <div class="content">
                 <QDaTechnicalDrawing a={100} b={60} L={40} />
+            </div>
+
+            <div class="content">
                 <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
                 <button onClick={handleAddToBucket}> add </button>               
             
