@@ -40,40 +40,48 @@ export default function MainPanel(){
 
     return <div>
         <h1>Alnor Cam</h1>
-        
-        <div class="container">
-            <div class="left-menu"> 
-                <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>  
-            </div>
-            <div class="content">
-                <QDa3DDrawing a={100} b={60} L={40} />
-            </div>"
-            <div class="content">
-                <QDaTechnicalDrawing a={100} b={60} L={40} />
+
+ 
+            <div id="wrapper">
+                <div id="sidebar">
+                    <button id="pin-btn">Pin</button>
+                    <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>
+                </div>
+                <div id="main-container">
+                    <div class="sub-container">
+                        <div class="nested-container">
+                        <QDa3DDrawing a={100} b={60} L={40} />   
+                        </div>
+                        <div class="nested-container">
+                        <QDaTechnicalDrawing a={100} b={60} L={40} />
+                        </div>                   
+                    </div>
+                    <div class="sub-container">
+                        <div class="nested-container">
+                        <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
+                        <button onClick={handleAddToBucket}> add </button>            
+                        </div>
+
+                        <div class="nested-container">
+                        <p>Order List</p>
+                        <ul>
+                            {orderList.map((item, index) => ( 
+                    
+                            <li key={index} className="order-list-item">
+                                Shape: {item.shape}
+                        
+                                    {Object.keys(item.dimensions).map((key) => (<label> {key}: {item.dimensions[key]} </label> ))}
+                            
+                                    <button onClick={() => handleDeleteFromBucket(index)}>x</button>
+                            </li>
+                            ))}
+                        </ul>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="content">
-                <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
-                <button onClick={handleAddToBucket}> add </button>               
-            
-            </div>
-
-            <div class="content" >
-                <p>Order List</p>
-                <ul>
-                    {orderList.map((item, index) => ( 
-            
-                    <li key={index} className="order-list-item">
-                        Shape: {item.shape}
-                  
-                            {Object.keys(item.dimensions).map((key) => (<label> {key}: {item.dimensions[key]} </label> ))}
-                      
-                            <button onClick={() => handleDeleteFromBucket(index)}>x</button>
-                    </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
             
         </div>
 

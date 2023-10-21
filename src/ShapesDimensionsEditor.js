@@ -1,6 +1,8 @@
 import React from 'react';
 import "./shapesDimensions.css"
 import shapeDimensions from './shapeDimensions.json'; // Import the JSON file
+import {createMinValueValidator} from './Validators';
+import withValidation from './WithValidation';
 
 function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions, rerenderKey}) {
   const dimensionLabels = getDimensionLabels(selectedShape);
@@ -17,6 +19,8 @@ function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions, reren
   );
 }
 
+const ValidatedDimensionInput = withValidation(DimensionInput, createMinValueValidator(200));
+
 function DimensionInput({ label, value, onChange }) {
   return (
     <div className="dimension-input">
@@ -31,7 +35,7 @@ function DimensionsEditor({ title, dimensions, handleDimensionChange, dimensionL
     <div>
       <h2>{title}</h2>
       {dimensionLabels.map((label) => (
-        <DimensionInput
+        <ValidatedDimensionInput
           key={label}
           label={label}
           value={dimensions[label]}

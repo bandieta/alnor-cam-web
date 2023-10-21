@@ -1,23 +1,49 @@
-.container {
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#wrapper {
     display: flex;
-    align-items: flex-start; /* Align items at the top of the container */
-    height: 100vh; /* 100% of the viewport height */
+    height: 100vh;
 }
 
-.left-menu {
-    flex: 1; /* Allow the left menu to grow and take 30% of the container width */
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    height: 100vh; /* Set the height to 100% of the viewport height */
-    overflow-y: auto; /* Add vertical scroll when content overflows */
+#sidebar {
+    position: sticky;
+    top: 0;
+    width: 20%;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #808080;   
 }
 
-.content {
-    flex: 2; /* Allow the content area to grow and take 70% of the container width */
-    background-color: #f2f2f2;
-    padding: 20px;
+#main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
 }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sub-container {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+}
+
+.nested-container {
+    flex: 1;
+    border: 1px solid black;
+    overflow: auto;
+}
+
 
 /* Add this to your CSS file */
 .order-list-item {
