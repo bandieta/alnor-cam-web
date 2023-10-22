@@ -3,6 +3,7 @@ import "./shapesDimensions.css"
 import shapeDimensions from './shapeDimensions.json'; // Import the JSON file
 import {createMinValueValidator} from './Validators';
 import withValidation from './WithValidation';
+import "./ShapeDimensionsEditor.css"
 
 function ShapesDimensionsEditor({selectedShape, dimensions, setDimensions, rerenderKey}) {
   const dimensionLabels = getDimensionLabels(selectedShape);
@@ -25,7 +26,7 @@ function DimensionInput({ label, value, onChange }) {
   return (
     <div className="dimension-input">
       <label>{label}: </label>
-      <input value={value} onChange={(e) => onChange(e.target.value)} />
+      <input value={value} onChange={(e) => onChange(e.target.value)} style={{ maxWidth: '200px' }} />
     </div>
   );
 }

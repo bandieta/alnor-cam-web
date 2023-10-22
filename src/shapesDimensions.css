@@ -13,7 +13,7 @@
   .dimension-input input {
     flex: 1;
     padding: 5px;
-    margin-right: 10px;
+    margin-right: 50px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -25,3 +25,5 @@
     color: red;
     font-size: 0.8em;
   }
+
+  
