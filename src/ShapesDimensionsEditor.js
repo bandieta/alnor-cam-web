@@ -42,37 +42,31 @@ function ShapesDimensionsEditor({ selectedShape, dimensions, setDimensions }) {
 }
 
 const DimensionInput = ({ label, value, onChange, onBlur, ...props }) => {
-  const [errorMessage, setErrorMessage] = useState('')
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    const [isValid, message] = onBlur(value);
-    setHasError(!isValid);
-    setErrorMessage(isValid ? '' : message);
-  }, [value, onBlur]);
-
+    const [errorMessage, setErrorMessage] = useState('')
+    const [hasError, setHasError] = useState(false);
+  
     return (
-        <div className={`dimension-input ${hasError ? 'has-error' : ''}`} style={{ position: 'relative' }}>
-            <label>{label}: </label>
-            <input 
-                value={value} 
-                onChange={onChange}
-                onBlur={(event) => {
-                    const [isValid, message] = onBlur(event.target.value);
-                    setHasError(!isValid);
-                    setErrorMessage(isValid ? '' : message);
-                }}
-                {...props} 
-            />
-            {errorMessage && 
-                <div className="error-group">
-                  <div className="error-mark">X</div>
-                  <div className="error-message">{errorMessage}</div>
-                </div>
-            }
-        </div>
+      <div className={`dimension-input ${hasError ? 'has-error' : ''}`} style={{ position: 'relative' }}>
+        <label>{label}: </label>
+        <input 
+          value={value} 
+          onChange={onChange}
+          onBlur={(event) => {
+            const [isValid, message] = onBlur(event.target.value);
+            setHasError(!isValid); 
+            setErrorMessage(isValid ? '' : message);
+          }}
+          {...props} 
+        />
+        {errorMessage && 
+          <div className="error-group">
+            <div className="error-mark">X</div>
+            <div className="error-message">{errorMessage}</div>
+          </div>
+        }
+      </div>
     );
-}
+  }
 
 const getDimensionLabels = shapeName => {
     if (shapeName in shapeDimensions) {
