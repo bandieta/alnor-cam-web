@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/alnor-cam-web/static/css/main.5a7005d4.css",
-    "main.js": "/alnor-cam-web/static/js/main.908ca9d8.js",
+    "main.css": "/alnor-cam-web/static/css/main.bbd60e17.css",
+    "main.js": "/alnor-cam-web/static/js/main.2cd47ca4.js",
     "static/js/787.3154ed6e.chunk.js": "/alnor-cam-web/static/js/787.3154ed6e.chunk.js",
     "index.html": "/alnor-cam-web/index.html",
-    "main.5a7005d4.css.map": "/alnor-cam-web/static/css/main.5a7005d4.css.map",
-    "main.908ca9d8.js.map": "/alnor-cam-web/static/js/main.908ca9d8.js.map",
+    "main.bbd60e17.css.map": "/alnor-cam-web/static/css/main.bbd60e17.css.map",
+    "main.2cd47ca4.js.map": "/alnor-cam-web/static/js/main.2cd47ca4.js.map",
     "787.3154ed6e.chunk.js.map": "/alnor-cam-web/static/js/787.3154ed6e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a7005d4.css",
-    "static/js/main.908ca9d8.js"
+    "static/css/main.bbd60e17.css",
+    "static/js/main.2cd47ca4.js"
   ]
 }
