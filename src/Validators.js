@@ -21,4 +21,14 @@ export function createMinValueValidator(minimum) {
       }
     };
   }
+
+  export const createGreaterThanValidator = (dimensions, field) => value => {
+    return (Number(value) > Number(dimensions[field]) ? null : `Value should be greater than ${field}`);
+  };
+
+  export const createLessThanValidator = (dimensions, field) => value => {
+    return (Number(value) < Number(dimensions[field]) ? null : `Value should be greater than ${field}`);
+  };
+
+
   

@@ -1,0 +1,8 @@
+{
+    "TR8a": {
+        "a": [ {"type": "minValue", "value": 200}, {"type": "maxValue", "value": 1500}, {"type": "greaterThan", "field": "b"}],
+        "b": [ {"type": "minValue", "value": 200}, {"type": "maxValue", "value": 2000}],
+        "c": [{"type": "greaterThan", "field": "d"}]
+
+    }
+}

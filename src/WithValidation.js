@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function withValidation(Component, validator) {
   return (props) => {
@@ -7,11 +7,11 @@ function withValidation(Component, validator) {
     const [isHovered, setIsHovered] = useState(false);
     const [tooltipTimeout, setTooltipTimeout] = useState(null);
 
-    useEffect(() => {
-      const [isValid, validMessage] = validator(props.value);
-      setValid(isValid);
-      setMessage(validMessage);
-    }, [props.value]);
+    const handleBlur = (e) => {
+        const [isValid, validMessage] = validator(e.target.value);
+        setValid(isValid);
+        setMessage(validMessage);
+    };
 
     const handleMouseEnter = () => {
       setIsHovered(true);
@@ -31,10 +31,7 @@ function withValidation(Component, validator) {
         <Component
           {...props}
           className={valid ? "" : "error"}
-          onChange={(event) => {
-            if (props.onChange) props.onChange(event);
-          }}
-          onFocus={() => setValid(true)}
+          onBlur={handleBlur}
         />
         {!valid && (
           <div className="error-icon">
