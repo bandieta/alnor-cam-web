@@ -4,6 +4,7 @@ import ShapesDimensionsEditor from "./ShapesDimensionsEditor";
 import "./MainPanel.css"
 import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
 import QDa3DDrawing from "./QDa3DDrawing";
+import { slide as Menu } from 'react-burger-menu';
 
 export default function MainPanel(){
 
@@ -11,7 +12,13 @@ export default function MainPanel(){
     const [dimensions, setDimensions] = useState([]);
     const [orderList, setOrderList] = useState([]);
     const [rerenderKey, setRerenderKey] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const forceRerender = () => setRerenderKey(rerenderKey + 1);
+
+    const handleMenuClick = () => {
+        setMenuOpen(!menuOpen);
+      };
 
     useEffect(() => {
         // Use the data imported from the JSON file
@@ -36,33 +43,31 @@ export default function MainPanel(){
         const updatedOrderList = orderList.filter((_, i) => i !== index);
         setOrderList(updatedOrderList);
       }
-    
+
 
     return <div>
-        <h1>Alnor Cam</h1>
+                <h1>Alnor Cam</h1>
 
- 
-            <div id="wrapper">
-                <div id="sidebar">
-                    <button id="pin-btn">Pin</button>
-                    <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>
+                <div className="burger-icon" onClick={handleMenuClick}>
                 </div>
-                <div id="main-container">
-                    <div class="sub-container">
-                        <div class="nested-container">
+
+                <Menu 
+                    isOpen={menuOpen} 
+                    onStateChange={(state) => setMenuOpen(state.isOpen)}
+                >
+                    <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>
+                </Menu>
+
+                <div>
+
                         <QDa3DDrawing a={100} b={60} L={40} />   
-                        </div>
-                        <div class="nested-container">
                         <QDaTechnicalDrawing a={100} b={60} L={40} />
-                        </div>                   
-                    </div>
-                    <div class="sub-container">
-                        <div class="nested-container">
+
                         <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
                         <button onClick={handleAddToBucket}> add </button>            
-                        </div>
+    
 
-                        <div class="nested-container">
+
                         <p>Order List</p>
                         <ul>
                             {orderList.map((item, index) => ( 
@@ -76,13 +81,10 @@ export default function MainPanel(){
                             </li>
                             ))}
                         </ul>
-                        </div>
-
-                    </div>
+             
                 </div>
-            </div>
 
-            
+                                
         </div>
 
 }
