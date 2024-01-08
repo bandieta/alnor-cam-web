@@ -5,6 +5,9 @@ import "./MainPanel.css"
 import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
 import QDa3DDrawing from "./QDa3DDrawing";
 import { slide as Menu } from 'react-burger-menu';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default function MainPanel(){
 
@@ -46,6 +49,8 @@ export default function MainPanel(){
 
 
     return <div>
+
+            <Container>
                 <h1>Alnor Cam</h1>
 
                 <div className="burger-icon" onClick={handleMenuClick}>
@@ -60,32 +65,39 @@ export default function MainPanel(){
 
                 <div>
 
-                        <QDa3DDrawing a={100} b={60} L={40} />   
-                        <QDaTechnicalDrawing a={100} b={60} L={40} />
-
-                        <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
-                        <button onClick={handleAddToBucket}> add </button>            
-    
-
-
-                        <p>Order List</p>
-                        <ul>
-                            {orderList.map((item, index) => ( 
-                    
-                            <li key={index} className="order-list-item">
-                                Shape: {item.shape}
+                    <Row>
+                        <Col>
+                            <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
+                            <button onClick={handleAddToBucket}> add </button>    
+                        </Col>     
+                        <Col>
+                            <p>Order List</p>
+                            <ul>
+                                {orderList.map((item, index) => ( 
                         
-                                    {Object.keys(item.dimensions).map((key) => (<label> {key}: {item.dimensions[key]} </label> ))}
+                                <li key={index} className="order-list-item">
+                                    Shape: {item.shape}
                             
-                                    <button onClick={() => handleDeleteFromBucket(index)}>x</button>
-                            </li>
-                            ))}
-                        </ul>
-             
+                                        {Object.keys(item.dimensions).map((key) => (<label> {key}: {item.dimensions[key]} </label> ))}
+                                
+                                        <button onClick={() => handleDeleteFromBucket(index)}>x</button>
+                                </li>
+                                ))}
+                            </ul>
+                        </Col>   
+                    </Row>
+
+                    <Row>
+                        <QDa3DDrawing a={100} b={60} L={40} />   
+                    </Row>
+                    <Row>
+                        <QDaTechnicalDrawing a={100} b={60} L={40} />
+                    </Row>
+
                 </div>
 
-                                
-        </div>
+            </Container>                 
+            </div>
 
 }
 
