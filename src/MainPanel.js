@@ -5,6 +5,7 @@ import "./MainPanel.css"
 import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
 import QDa3DDrawing from "./QDa3DDrawing";
 import { slide as Menu } from 'react-burger-menu';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -93,6 +94,8 @@ export default function MainPanel(){
                     <Row>
                         <QDaTechnicalDrawing a={100} b={60} L={40} />
                     </Row>
+
+
 
                 </div>
 

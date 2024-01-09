@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import shapeDimensions from './shapeDimensions.json';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function ShapesDimensionsEditor({ selectedShape, dimensions, setDimensions }) {
 
@@ -27,14 +29,19 @@ function ShapesDimensionsEditor({ selectedShape, dimensions, setDimensions }) {
 
 const DimensionInput = ({ label, value, onChange, ...props }) => {
     return (
-      <div>
-        <label>{label}: </label>
-        <input 
+      <>
+      <FloatingLabel
+        label={label}
+      >
+        <Form.Control type="input" 
+           placeholder={label}
           value={value} 
           onChange={onChange}
           {...props} 
         />
-      </div>
+      </FloatingLabel>
+        
+      </>
     );
   }
 
@@ -48,8 +55,8 @@ const getDimensionLabels = shapeName => {
 
 const DimensionsEditor = ({ title, handleDimensionChange, dimensionLabels, dimensions }) => {
     return (
-        <div>
-            <h2>{title}</h2>
+        <>
+            <h3>{title}</h3>
             {dimensionLabels.map((label) => {
                 return (
                     <DimensionInput
@@ -57,11 +64,10 @@ const DimensionsEditor = ({ title, handleDimensionChange, dimensionLabels, dimen
                         label={label}
                         value={dimensions[label] || ''}
                         onChange={(event) => handleDimensionChange(label, event.target.value)}
-                        style={{ maxWidth: '200px' }}
                     />
                 );
             })}
-        </div>
+        </>
     );
 };
 
