@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import data from './ShapesList.json';
 import './ShapeList.css';
 
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import Stack from 'react-bootstrap/Stack';
+
 function ShapeList({selectedShape, setSelectedShape}) {
   const [list, setList] = useState([]);
 
@@ -11,34 +15,37 @@ function ShapeList({selectedShape, setSelectedShape}) {
   }, []);
 
   return (
-    <div>
+    <ButtonGroup  vertical>
 
-      <ul className="shape-list">
         {list.map((shape, index) => (
-          <li key={index}>
             <ShapeElement 
               shape={shape} 
               symbol={shape.symbol} 
               setSelectedShape={setSelectedShape} 
               selectedShape={selectedShape}
             /> 
-          </li>
         ))}
-      </ul>
-    </div>
+
+    </ButtonGroup >
   );
 }
 
 function ShapeElement({shape, symbol, setSelectedShape, selectedShape}) {
   return (
-    <div className="shape-element">
-        <button className="shape-button" onClick={() => setSelectedShape(shape.symbol)}>
+        <ToggleButton 
+          onClick={() => setSelectedShape(shape.symbol)}
+          checked={symbol === selectedShape}
+          type="radio"
+          variant='outline-light'
+        >
 
-          <strong>
-              {symbol === selectedShape ? '['+symbol+']' : symbol}
-          </strong> {shape.name}
-        </button>
-    </div>
+          <Stack className="d-flex justify-content-between align-items-start">
+            <div className="fw-bold"> {symbol} </div>
+            <div className="ms-2 ms-auto"> {shape.name} </div>
+          </Stack>
+
+
+        </ToggleButton>
   );
 } 
 
