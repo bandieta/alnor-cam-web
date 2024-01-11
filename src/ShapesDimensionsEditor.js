@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import ShapeEditorQDa from './ShapeEditorQDa'
 
 function ShapesDimensionsEditor({ selectedShape, dimensions, setDimensions }) {
 
@@ -16,15 +17,29 @@ function ShapesDimensionsEditor({ selectedShape, dimensions, setDimensions }) {
 
     const dimensionLabels = getDimensionLabels(selectedShape);
 
-  return (
-    <DimensionsEditor 
-      title={`${selectedShape} Dimensions`} 
-      handleDimensionChange={handleDimensionChange} 
-      dimensionLabels={dimensionLabels} 
-      dimensions={dimensions} 
-      key={selectedShape}   
-    />
-  );
+    switch (selectedShape) {
+        case 'QDa':
+          return <ShapeEditorQDa
+                    dimensions={dimensions} 
+                    setDimensions={setDimensions} 
+                 />;
+        case 'B':
+          return <></>;
+        case 'C':
+          return <></>;
+        default:
+          return <DimensionsEditor 
+                    title={`${selectedShape} Dimensions`} 
+                    handleDimensionChange={handleDimensionChange} 
+                    dimensionLabels={dimensionLabels} 
+                    dimensions={dimensions} 
+                    key={selectedShape}   
+                />
+        ; // or a default component or an error message
+      }
+
+
+
 }
 
 const DimensionInput = ({ label, value, onChange, ...props }) => {
@@ -35,9 +50,9 @@ const DimensionInput = ({ label, value, onChange, ...props }) => {
       >
         <Form.Control type="input" 
            placeholder={label}
-          value={value} 
-          onChange={onChange}
-          {...props} 
+           value={value} 
+           onChange={onChange}
+           {...props} 
         />
       </FloatingLabel>
         
