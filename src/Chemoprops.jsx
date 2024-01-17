@@ -1,6 +1,7 @@
 // Chemoprops.jsx
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { FloatingLabel } from 'react-bootstrap';
 
 const Chemoprops = ({ data, selectedValues, onSelectionChange }) => {
   return (
@@ -8,7 +9,7 @@ const Chemoprops = ({ data, selectedValues, onSelectionChange }) => {
       <h2>Chemoprops Component</h2>
       <Form>
         <Form.Group controlId="GruboscChemo">
-          <Form.Label>Grubosc Chemo</Form.Label>
+          <FloatingLabel label='Grubosc Chemo'>
           <Form.Control
             as="select"
             value={selectedValues.GruboscChemo}
@@ -20,10 +21,42 @@ const Chemoprops = ({ data, selectedValues, onSelectionChange }) => {
               </option>
             ))}
           </Form.Control>
+          </FloatingLabel>
         </Form.Group>
 
-        {/* Add other Form.Group elements for the remaining fields */}
-        {/* ... */}
+        <Form.Group controlId="MaterialChemo">
+          <FloatingLabel label='Material Chemo'>
+          <Form.Control
+            as="select"
+            value={selectedValues.MaterialChemo}
+            onChange={(e) => onSelectionChange('MaterialChemo', e.target.value)}
+          >
+            {data.MaterialChemo.map((value, index) => (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            ))}
+          </Form.Control>
+          </FloatingLabel>
+        </Form.Group>
+
+        <Form.Group controlId="WykonanieChemo">
+          <FloatingLabel label='Wykonanie Chemo'>
+          <Form.Control
+            as="select"
+            value={selectedValues.WykonanieChemo}
+            onChange={(e) => onSelectionChange('WykonanieChemo', e.target.value)}
+          >
+            {data.WykonanieChemo.map((value, index) => (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            ))}
+          </Form.Control>
+          </FloatingLabel>
+        </Form.Group>
+
+
       </Form>
     </div>
   );
