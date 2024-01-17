@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import data from './ShapesList.json';
+import data from './shapesList.json';
 import './ShapeList.css';
 
 import ButtonGroup from 'react-bootstrap/ButtonGroup';

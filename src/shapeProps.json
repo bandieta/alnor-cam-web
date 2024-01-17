@@ -1,0 +1,17 @@
+{
+  "blachy": {
+    "GruboscBlacha": ["0.6", "0.0", "1", "1.1"],
+    "Material": ["Ocynk", "Kwasowka", "Aluminium"],
+    "Wykonanie": ["Niskocisnieniowe", "Sredniocisnieniowe"],
+    "Kl_szczel": ["A", "B"],
+    "L_wzmoc": ["standard", 0, 1, 2, 3, "1krzyzowe", "2krzyzowe"],
+    "RamkiWL": ["P20", "P30", "P40"],
+    "RamkiWYL": ["P20", "P30", "P40"],
+    "RamkiOd": ["P20", "P30", "P40"]
+  },
+  "chemo": {
+    "GruboscChemo": ["4", "5", "6", "8", "10", "12"],
+    "MaterialChemo": ["PCV", "PP", "PPs", "PE"],
+    "WykonanieChemo": ["Mufy", "Kolnierze"]
+  }
+}

@@ -17,12 +17,12 @@ const ShapeEditorQDa = ({dimensions, setDimensions}) => {
 
     if (!isNaN(value))
     {
-      setDimensions({ ...dimensions, ['a']: value});
+      setDimensions({ ...dimensions, "a": value});
       validateAndSetFields();
     }
     else 
     {
-      setDimensions({ ...dimensions, ['a']: ''});
+      setDimensions({ ...dimensions, "a": ''});
 
       setValid_a(false);
       setValidationMessage_a('Cannot be empty');
@@ -34,12 +34,12 @@ const ShapeEditorQDa = ({dimensions, setDimensions}) => {
 
     if (!isNaN(value))
     {
-      setDimensions({ ...dimensions, ['b']: value});
+      setDimensions({ ...dimensions, "b": value});
       validateAndSetFields();
     }
     else
     {
-      setDimensions({ ...dimensions, ['b']: ''});
+      setDimensions({ ...dimensions, "b": ''});
 
       setValid_b(false);
       setValidationMessage_b('Cannot be empty');
@@ -51,13 +51,13 @@ const ShapeEditorQDa = ({dimensions, setDimensions}) => {
 
     if (!isNaN(value))
     {
-      setDimensions({ ...dimensions, ['L']: value});
+      setDimensions({ ...dimensions, "L": value});
 
       validateAndSetFields();
     }
     else
     {
-      setDimensions({ ...dimensions, ['L']: ''});
+      setDimensions({ ...dimensions, "L": ''});
 
       setValid_L(false);
       setValidationMessage_L('Cannot be empty');

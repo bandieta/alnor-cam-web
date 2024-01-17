@@ -5,6 +5,7 @@ import "./MainPanel.css"
 import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
 import QDa3DDrawing from "./QDa3DDrawing";
 import { slide as Menu } from 'react-burger-menu';
+import ShapePropsComponent from "./ShapePropsComponent";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -13,6 +14,8 @@ import Col from 'react-bootstrap/Col';
 export default function MainPanel(){
 
     const [selectedShape, setSelectedShape] = useState("QDa");
+    const [isChemo, setIsChemo] = useState(false);
+
     const [dimensions, setDimensions] = useState([]);
     const [orderList, setOrderList] = useState([]);
     const [rerenderKey, setRerenderKey] = useState(0);
@@ -58,7 +61,7 @@ export default function MainPanel(){
                 </div>
 
                 <Menu 
-                    isOpen={menuOpen} 
+                    isOpen={menuOpen}
                     onStateChange={(state) => setMenuOpen(state.isOpen)}
                 >
                     <ShapeList selectedShape={selectedShape} setSelectedShape={handleShapeChange}/>
@@ -69,6 +72,7 @@ export default function MainPanel(){
                     <Row>
                         <Col>
                             <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
+                            <ShapePropsComponent selectedShape={selectedShape} isChemo={isChemo} setIsChemo={setIsChemo}></ShapePropsComponent>
                             <button onClick={handleAddToBucket}> add </button>    
                         </Col>     
                         <Col>
