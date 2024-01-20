@@ -44,7 +44,11 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
       <Form.Group as={Col} controlId="fieldA" className="mb-3">
         <Row>
           <Col xs={8}>
-              <OverlayTrigger placement="right" overlay={renderTooltip(validation.a.message)}>
+              <OverlayTrigger 
+                placement="right" 
+                overlay={renderTooltip(validation.a.message)}
+                show={validation.a.message ? true : false}
+              >
                 <div>
                   <FloatingLabel label='a'>
                   <Form.Control
@@ -65,7 +69,11 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
       <Form.Group as={Col} controlId="fieldB" className="mb-3">
         <Row>
           <Col xs={8}>
-              <OverlayTrigger placement="right" overlay={renderTooltip(validation.b.message)}>
+              <OverlayTrigger 
+                placement="right" 
+                overlay={renderTooltip(validation.b.message)}
+                show={validation.b.message ? true : false}
+              >
                 <div>
                   <FloatingLabel label='b'>
                   <Form.Control
@@ -85,7 +93,11 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
       <Form.Group as={Col} controlId="fieldL" className="mb-3">
         <Row>
           <Col xs={8}>
-              <OverlayTrigger placement="right" overlay={renderTooltip(validation.L.message)}>
+              <OverlayTrigger 
+                placement="right" 
+                overlay={renderTooltip(validation.L.message)}
+                show={validation.L.message ? true : false}
+              >
                 <div>
                   <FloatingLabel label="L">
                   <Form.Control
