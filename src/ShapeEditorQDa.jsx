@@ -1,145 +1,114 @@
-import React, { useState } from 'react';
-import { Form, Button, FloatingLabel } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Form, FloatingLabel, Col, OverlayTrigger, Tooltip, Row } from 'react-bootstrap';
+import { validateField, validateAndSetFields } from './ShapeEditorQDaValidator';
 
-const ShapeEditorQDa = ({dimensions, setDimensions}) => {
+const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
+  const [validation, setValidation] = useState({
+    a: { isValid: true, message: '' },
+    b: { isValid: true, message: '' },
+    L: { isValid: true, message: '' },
+  });
 
-  const [isValid_a, setValid_a] = useState(true);
-  const [validationMessage_a, setValidationMessage_a] = useState('');
+  useEffect(() => {
+    // Perform validation when dimensions change
+    const fieldsValidation = validateAndSetFields(dimensions);
+    setValidation(fieldsValidation);
+  }, [dimensions]);
 
-  const [isValid_b, setValid_b] = useState(true);
-  const [validationMessage_b, setValidationMessage_b] = useState('');
+  const handleFieldChange = (fieldName, value) => {
+    const validationInfo = validateField(fieldName, value);
+    setValidation((prevValidation) => ({
+      ...prevValidation,
+      [fieldName]: validationInfo,
+    }));
 
-  const [isValid_L, setValid_L] = useState(true);
-  const [validationMessage_L, setValidationMessage_L] = useState('');
-
-  const handleFieldAChange = (event) => {
-    const value = parseFloat(event.target.value);
-
-    if (!isNaN(value))
-    {
-      setDimensions({ ...dimensions, "a": value});
-      validateAndSetFields();
-    }
-    else 
-    {
-      setDimensions({ ...dimensions, "a": ''});
-
-      setValid_a(false);
-      setValidationMessage_a('Cannot be empty');
-    }
-  };
-
-  const handleFieldBChange = (event) => {
-    const value = parseFloat(event.target.value);
-
-    if (!isNaN(value))
-    {
-      setDimensions({ ...dimensions, "b": value});
-      validateAndSetFields();
-    }
-    else
-    {
-      setDimensions({ ...dimensions, "b": ''});
-
-      setValid_b(false);
-      setValidationMessage_b('Cannot be empty');
+    if (validationInfo.isValid) {
+      setDimensions((prevDimensions) => ({
+        ...prevDimensions,
+        [fieldName]: parseFloat(value),
+      }));
+    } else {
+      setDimensions((prevDimensions) => ({
+        ...prevDimensions,
+        [fieldName]: '',
+      }));
     }
   };
 
-  const handleFieldLChange = (event) => {
-    const value = parseFloat(event.target.value);
-
-    if (!isNaN(value))
-    {
-      setDimensions({ ...dimensions, "L": value});
-
-      validateAndSetFields();
-    }
-    else
-    {
-      setDimensions({ ...dimensions, "L": ''});
-
-      setValid_L(false);
-      setValidationMessage_L('Cannot be empty');
-    }
-  };
-
-  const validateAndSetFields = () => {
-
-    const valueA = dimensions['a'];
-    const valueB = dimensions['b'];
-    const valueL = dimensions['L'];
-    
-    setValid_a(true);
-    setValidationMessage_a('');
-    setValid_b(true);
-    setValidationMessage_b('');
-    setValid_L(true);
-    setValidationMessage_L('');
-
-
-    if (valueA <= valueB) {
-      setValid_a(false);
-      setValidationMessage_a('Field A must be higher than Field B.');
-    } else if (valueA <= 200 || valueA >= 1000) {
-      setValid_a(false);
-      setValidationMessage_a('Field A must be between 200 and 1000.');
-    } else if (valueB <= 400 || valueB >= 1500) {
-      setValid_b(false);
-      setValidationMessage_b('Field B must be between 400 and 1500.');
-    }
-
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Additional logic to handle form submission if needed
-  };
+  const renderTooltip = (message) => (
+    <Tooltip id="tooltip">{message}</Tooltip>
+  );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="fieldA">
-        <FloatingLabel label='a'>
-        <Form.Control
-          type="text"
-          value={dimensions['a']}
-          placeholder='a'
-          onChange={handleFieldAChange}
-          isInvalid={!isValid_a}
-        />
-        <Form.Control.Feedback type="invalid">{validationMessage_a}</Form.Control.Feedback>
-        </FloatingLabel>
-
+    <Form>
+      <Form.Group as={Col} controlId="fieldA" className="mb-3">
+        <Row>
+          <Col xs={8}>
+            <FloatingLabel label='a'>
+              <Form.Control
+                type="text"
+                value={dimensions['a']}
+                placeholder='a'
+                onChange={(e) => handleFieldChange('a', e.target.value)}
+                isInvalid={!validation.a.isValid}
+              />
+            </FloatingLabel>
+          </Col>
+          <Col xs={4} className="d-flex align-items-center">
+            <OverlayTrigger placement="right" overlay={renderTooltip(validation.a.message)}>
+              <div className="ms-2">
+                <strong>!</strong>
+              </div>
+            </OverlayTrigger>
+          </Col>
+        </Row>
       </Form.Group>
 
-      <Form.Group controlId="fieldB">
-        <FloatingLabel label='b'>
-        <Form.Control
-          type="text"
-          value={dimensions['b']}
-          placeholder='b'
-          onChange={handleFieldBChange}
-          isInvalid={!isValid_b}
-        />
-        <Form.Control.Feedback type="invalid">{validationMessage_b}</Form.Control.Feedback>
-        </FloatingLabel>
+      <Form.Group as={Col} controlId="fieldB" className="mb-3">
+        <Row>
+          <Col xs={8}>
+            <FloatingLabel label='b'>
+              <Form.Control
+                type="text"
+                value={dimensions['b']}
+                placeholder='b'
+                onChange={(e) => handleFieldChange('b', e.target.value)}
+                isInvalid={!validation.b.isValid}
+              />
+            </FloatingLabel>
+          </Col>
+          <Col xs={4} className="d-flex align-items-center">
+            <OverlayTrigger placement="right" overlay={renderTooltip(validation.b.message)}>
+              <div className="ms-2">
+                <strong>!</strong>
+              </div>
+            </OverlayTrigger>
+          </Col>
+        </Row>
       </Form.Group>
 
-
-      <FloatingLabel label="L">
-        <Form.Control 
-           type="text" 
-           placeholder='L'
-           value={dimensions['L']}
-           onChange={handleFieldLChange}
-           isInvalid={!isValid_L}
-        />
-        <Form.Control.Feedback type="invalid">{validationMessage_L}</Form.Control.Feedback>
-      </FloatingLabel>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <Form.Group as={Col} controlId="fieldL" className="mb-3">
+        <Row>
+          <Col xs={8}>
+            <FloatingLabel label="L">
+              <Form.Control
+                type="text"
+                value={dimensions['L']}
+                placeholder='L'
+                onChange={(e) => handleFieldChange('L', e.target.value)}
+                isInvalid={!validation.L.isValid}
+              />
+            </FloatingLabel>
+          </Col>
+          <Col xs={4} className="d-flex align-items-center">
+            <OverlayTrigger placement="right" overlay={renderTooltip(validation.L.message)}>
+              <div className="ms-2">
+                <strong>!</strong>
+              </div>
+            </OverlayTrigger>
+          </Col>
+        </Row>
+      </Form.Group>
     </Form>
   );
 };
