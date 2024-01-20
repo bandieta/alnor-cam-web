@@ -1,9 +1,8 @@
-// Balchypros.jsx
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { FloatingLabel } from 'react-bootstrap';
 
-const Balchypros = ({ data, selectedValues, onSelectionChange }) => {
+const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
   return (
     <div>
       <h2>Balchypros Component</h2>
@@ -40,6 +39,44 @@ const Balchypros = ({ data, selectedValues, onSelectionChange }) => {
           </Form.Control>
           </FloatingLabel>
         </Form.Group>
+
+        {izolowane ? (
+            <>
+              <Form.Group controlId="PlaszczZew">
+              <FloatingLabel label='PlaszczZew'>
+              <Form.Control
+                as="select"
+                value={selectedValues.PlaszczZew}
+                onChange={(e) => onSelectionChange('PlaszczZew', e.target.value)}
+              >
+                {data.PlaszczZew.map((value, index) => (
+                  <option key={index} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </Form.Control>
+              </FloatingLabel>
+              </Form.Group>
+
+              <Form.Group controlId="GruboscIzolacji">
+              <FloatingLabel label='GruboscIzolacji'>
+              <Form.Control
+                as="select"
+                value={selectedValues.GruboscIzolacji}
+                onChange={(e) => onSelectionChange('GruboscIzolacji', e.target.value)}
+              >
+                {data.GruboscIzolacji.map((value, index) => (
+                  <option key={index} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </Form.Control>
+              </FloatingLabel>
+              </Form.Group>
+
+            </>
+            ) : (<></>)
+        }
 
         <Form.Group controlId="Wykonanie">
           <FloatingLabel label='Wykonanie'>

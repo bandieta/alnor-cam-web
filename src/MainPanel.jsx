@@ -15,6 +15,7 @@ export default function MainPanel(){
 
     const [selectedShape, setSelectedShape] = useState("QDa");
     const [isChemo, setIsChemo] = useState(false);
+    const [systemKsztaltek, setSystemKsztaltek] = useState("Prostokatne");
 
     const [dimensions, setDimensions] = useState([]);
     const [orderList, setOrderList] = useState([]);
@@ -72,7 +73,14 @@ export default function MainPanel(){
                     <Row>
                         <Col>
                             <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
-                            <ShapePropsComponent selectedShape={selectedShape} isChemo={isChemo} setIsChemo={setIsChemo}></ShapePropsComponent>
+                            <ShapePropsComponent 
+                                    selectedShape={selectedShape} 
+                                    isChemo={isChemo} 
+                                    setIsChemo={setIsChemo}
+                                    systemKsztaltek={systemKsztaltek}
+                                    setSystemKsztaltek={setSystemKsztaltek}
+                            >   
+                            </ShapePropsComponent>
                             <button onClick={handleAddToBucket}> add </button>    
                         </Col>     
                         <Col>

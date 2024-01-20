@@ -2,6 +2,8 @@
   "blachy": {
     "GruboscBlacha": ["0.6", "0.0", "1", "1.1"],
     "Material": ["Ocynk", "Kwasowka", "Aluminium"],
+    "PlaszczZew": ["Ocynk", "Kwasowka", "Aluminium", "Bez Plaszcza"], 
+    "GruboscIzolacji" : ["50mm", "100mm"],
     "Wykonanie": ["Niskocisnieniowe", "Sredniocisnieniowe"],
     "Kl_szczel": ["A", "B"],
     "L_wzmoc": ["standard", 0, 1, 2, 3, "1krzyzowe", "2krzyzowe"],
