@@ -44,22 +44,20 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
       <Form.Group as={Col} controlId="fieldA" className="mb-3">
         <Row>
           <Col xs={8}>
-            <FloatingLabel label='a'>
-              <Form.Control
-                type="text"
-                value={dimensions['a']}
-                placeholder='a'
-                onChange={(e) => handleFieldChange('a', e.target.value)}
-                isInvalid={!validation.a.isValid}
-              />
-            </FloatingLabel>
-          </Col>
-          <Col xs={4} className="d-flex align-items-center">
-            <OverlayTrigger placement="right" overlay={renderTooltip(validation.a.message)}>
-              <div className="ms-2">
-                <strong>!</strong>
-              </div>
-            </OverlayTrigger>
+              <OverlayTrigger placement="right" overlay={renderTooltip(validation.a.message)}>
+                <div>
+                  <FloatingLabel label='a'>
+                  <Form.Control
+                    type="text"
+                    value={dimensions['a']}
+                    placeholder='a'
+                    onChange={(e) => handleFieldChange('a', e.target.value)}
+                    className={!validation.a.isValid ? 'is-invalid' : ''}
+                  />
+                  </FloatingLabel>
+                </div>
+              </OverlayTrigger>
+
           </Col>
         </Row>
       </Form.Group>
@@ -67,22 +65,19 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
       <Form.Group as={Col} controlId="fieldB" className="mb-3">
         <Row>
           <Col xs={8}>
-            <FloatingLabel label='b'>
-              <Form.Control
-                type="text"
-                value={dimensions['b']}
-                placeholder='b'
-                onChange={(e) => handleFieldChange('b', e.target.value)}
-                isInvalid={!validation.b.isValid}
-              />
-            </FloatingLabel>
-          </Col>
-          <Col xs={4} className="d-flex align-items-center">
-            <OverlayTrigger placement="right" overlay={renderTooltip(validation.b.message)}>
-              <div className="ms-2">
-                <strong>!</strong>
-              </div>
-            </OverlayTrigger>
+              <OverlayTrigger placement="right" overlay={renderTooltip(validation.b.message)}>
+                <div>
+                  <FloatingLabel label='b'>
+                  <Form.Control
+                    type="text"
+                    value={dimensions['b']}
+                    placeholder='b'
+                    onChange={(e) => handleFieldChange('b', e.target.value)}
+                    className={!validation.b.isValid ? 'is-invalid' : ''}
+                  />
+                  </FloatingLabel>
+                </div>
+              </OverlayTrigger>
           </Col>
         </Row>
       </Form.Group>
@@ -90,22 +85,19 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
       <Form.Group as={Col} controlId="fieldL" className="mb-3">
         <Row>
           <Col xs={8}>
-            <FloatingLabel label="L">
-              <Form.Control
-                type="text"
-                value={dimensions['L']}
-                placeholder='L'
-                onChange={(e) => handleFieldChange('L', e.target.value)}
-                isInvalid={!validation.L.isValid}
-              />
-            </FloatingLabel>
-          </Col>
-          <Col xs={4} className="d-flex align-items-center">
-            <OverlayTrigger placement="right" overlay={renderTooltip(validation.L.message)}>
-              <div className="ms-2">
-                <strong>!</strong>
-              </div>
-            </OverlayTrigger>
+              <OverlayTrigger placement="right" overlay={renderTooltip(validation.L.message)}>
+                <div>
+                  <FloatingLabel label="L">
+                  <Form.Control
+                    type="text"
+                    value={dimensions['L']}
+                    placeholder='L'
+                    onChange={(e) => handleFieldChange('L', e.target.value)}s
+                    className={!validation.L.isValid ? 'is-invalid' : ''}
+                  />
+                  </FloatingLabel>
+                </div>
+              </OverlayTrigger>
           </Col>
         </Row>
       </Form.Group>
