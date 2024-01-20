@@ -10,7 +10,6 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
   });
 
   useEffect(() => {
-    // Perform validation when dimensions change
     const fieldsValidation = validateAndSetFields(dimensions);
     setValidation(fieldsValidation);
   }, [dimensions]);
@@ -35,84 +34,40 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
     }
   };
 
-  const renderTooltip = (message) => (
-    <Tooltip id="tooltip">{message}</Tooltip>
-  );
+  const renderTooltip = (props, field) => {
+    if (validation[field].message) {
+      return <Tooltip id={`tooltip-${field}`} {...props}>{validation[field].message}</Tooltip>;
+    }
+    return <></>;
+  }
 
   return (
     <Form>
-      <Form.Group as={Col} controlId="fieldA" className="mb-3">
-        <Row>
-          <Col xs={8}>
-              <OverlayTrigger 
-                placement="right" 
-                overlay={renderTooltip(validation.a.message)}
-                show={validation.a.message ? true : false}
-              >
-                <div>
-                  <FloatingLabel label='a'>
-                  <Form.Control
-                    type="text"
-                    value={dimensions['a']}
-                    placeholder='a'
-                    onChange={(e) => handleFieldChange('a', e.target.value)}
-                    className={!validation.a.isValid ? 'is-invalid' : ''}
-                  />
-                  </FloatingLabel>
-                </div>
-              </OverlayTrigger>
-
-          </Col>
-        </Row>
-      </Form.Group>
-
-      <Form.Group as={Col} controlId="fieldB" className="mb-3">
-        <Row>
-          <Col xs={8}>
-              <OverlayTrigger 
-                placement="right" 
-                overlay={renderTooltip(validation.b.message)}
-                show={validation.b.message ? true : false}
-              >
-                <div>
-                  <FloatingLabel label='b'>
-                  <Form.Control
-                    type="text"
-                    value={dimensions['b']}
-                    placeholder='b'
-                    onChange={(e) => handleFieldChange('b', e.target.value)}
-                    className={!validation.b.isValid ? 'is-invalid' : ''}
-                  />
-                  </FloatingLabel>
-                </div>
-              </OverlayTrigger>
-          </Col>
-        </Row>
-      </Form.Group>
-
-      <Form.Group as={Col} controlId="fieldL" className="mb-3">
-        <Row>
-          <Col xs={8}>
-              <OverlayTrigger 
-                placement="right" 
-                overlay={renderTooltip(validation.L.message)}
-                show={validation.L.message ? true : false}
-              >
-                <div>
-                  <FloatingLabel label="L">
-                  <Form.Control
-                    type="text"
-                    value={dimensions['L']}
-                    placeholder='L'
-                    onChange={(e) => handleFieldChange('L', e.target.value)}s
-                    className={!validation.L.isValid ? 'is-invalid' : ''}
-                  />
-                  </FloatingLabel>
-                </div>
-              </OverlayTrigger>
-          </Col>
-        </Row>
-      </Form.Group>
+      {['a', 'b', 'L'].map(field => (
+        <Form.Group as={Col} controlId={`field${field}`} className="mb-3">
+            <Row>
+                <Col xs={8}>
+                <OverlayTrigger 
+                    placement="right" 
+                    overlay={(props) => renderTooltip(props, field)}
+                    trigger={validation[field].message ? ["hover","focus"] : []}
+                >
+                    <div>
+                    <FloatingLabel label={field}>
+                        <Form.Control
+                        type="text"
+                        value={dimensions[field]}
+                        placeholder={field}
+                        onChange={(e) => handleFieldChange(field, e.target.value)}
+                        className={!validation[field].isValid ? 'is-invalid' : ''}
+                        />
+                    </FloatingLabel>
+                    </div>
+                </OverlayTrigger>
+                </Col>
+            </Row>
+        </Form.Group>
+      ))}
     </Form>
   );
 };
