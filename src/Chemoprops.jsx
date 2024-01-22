@@ -5,7 +5,6 @@ import { FloatingLabel } from 'react-bootstrap';
 const Chemoprops = ({ data, selectedValues, onSelectionChange }) => {
   return (
     <div>
-      <h2>Chemoprops Component</h2>
       <Form>
         <Form.Group controlId="GruboscChemo">
           <FloatingLabel label='Grubosc Chemo'>

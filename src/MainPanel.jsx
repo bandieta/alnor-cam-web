@@ -72,7 +72,11 @@ export default function MainPanel(){
 
                     <Row>
                         <Col>
+                            <Row>
+                            <Col>
                             <ShapesDimensionsEditor selectedShape={selectedShape} dimensions={dimensions} setDimensions={setDimensions} rerenderKey={rerenderKey}/>
+                            </Col>
+                            <Col>
                             <ShapePropsComponent 
                                     selectedShape={selectedShape} 
                                     isChemo={isChemo} 
@@ -81,6 +85,8 @@ export default function MainPanel(){
                                     setSystemKsztaltek={setSystemKsztaltek}
                             >   
                             </ShapePropsComponent>
+                            </Col>
+                            </Row>
                             <button onClick={handleAddToBucket}> add </button>    
                         </Col>     
                         <Col>

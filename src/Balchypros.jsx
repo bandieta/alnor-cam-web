@@ -1,12 +1,11 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
-import { FloatingLabel } from 'react-bootstrap';
+import { Form, FloatingLabel, Col, Row } from 'react-bootstrap';
 
 const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
   return (
     <div>
-      <h2>Balchypros Component</h2>
       <Form>
+
         <Form.Group controlId="GruboscBlacha">
           <FloatingLabel label='Grubosc Blacha'>
           <Form.Control
@@ -22,8 +21,6 @@ const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
           </Form.Control>
           </FloatingLabel>
         </Form.Group>
-
-
         <Form.Group controlId="Material">
           <FloatingLabel label='Material'>
           <Form.Control
@@ -57,7 +54,6 @@ const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
               </Form.Control>
               </FloatingLabel>
               </Form.Group>
-
               <Form.Group controlId="GruboscIzolacji">
               <FloatingLabel label='GruboscIzolacji'>
               <Form.Control
@@ -73,7 +69,6 @@ const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
               </Form.Control>
               </FloatingLabel>
               </Form.Group>
-
             </>
             ) : (<></>)
         }
@@ -93,7 +88,6 @@ const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
           </Form.Control>
           </FloatingLabel>
         </Form.Group>
-
         <Form.Group controlId="Kl_szczel">
           <FloatingLabel label='Klucz szczelności'>
           <Form.Control
@@ -109,7 +103,6 @@ const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
           </Form.Control>
           </FloatingLabel>
         </Form.Group>
-
 
         <Form.Group controlId="L_wzmoc">
           <FloatingLabel label='Liczba wzmocnień'>
@@ -174,8 +167,6 @@ const Balchypros = ({ data, selectedValues, onSelectionChange, izolowane }) => {
           </Form.Control>
           </FloatingLabel>
         </Form.Group>
-
-   
    
 
       </Form>

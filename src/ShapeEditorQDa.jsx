@@ -44,15 +44,12 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
   return (
     <Form>
       {['a', 'b', 'L'].map(field => (
-        <Form.Group as={Col} controlId={`field${field}`} className="mb-3">
-            <Row>
-                <Col xs={8}>
+        <Form.Group as={Col} controlId={`field${field}`} >
                 <OverlayTrigger 
                     placement="right" 
                     overlay={(props) => renderTooltip(props, field)}
                     trigger={validation[field].message ? ["hover","focus"] : []}
                 >
-                    <div>
                     <FloatingLabel label={field}>
                         <Form.Control
                         type="text"
@@ -62,10 +59,7 @@ const ShapeEditorQDa = ({ dimensions, setDimensions }) => {
                         className={!validation[field].isValid ? 'is-invalid' : ''}
                         />
                     </FloatingLabel>
-                    </div>
                 </OverlayTrigger>
-                </Col>
-            </Row>
         </Form.Group>
       ))}
     </Form>
