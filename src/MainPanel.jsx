@@ -2,7 +2,7 @@ import ShapeList from "./ShapeList";
 import React, { useEffect, useState } from 'react';
 import ShapesDimensionsEditor from "./ShapesDimensionsEditor";
 import "./MainPanel.css"
-import QDaTechnicalDrawing from "./QDaTechnicalDrawing";
+
 import QDa3DDrawing from "./QDa3DDrawing";
 import { slide as Menu } from 'react-burger-menu';
 import ShapePropsComponent from "./ShapePropsComponent";
@@ -10,6 +10,9 @@ import ShapePropsComponent from "./ShapePropsComponent";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import TechnicalDrawing from "./TechnicalDrawing";
+
+import drawShape from "./TechnicalQDaDraw";
 
 export default function MainPanel(){
 
@@ -110,7 +113,7 @@ export default function MainPanel(){
                         <QDa3DDrawing a={100} b={60} L={40} />   
                     </Row>
                     <Row>
-                        <QDaTechnicalDrawing a={100} b={60} L={40} />
+                        <TechnicalDrawing drawFunction={drawShape} dimensions={dimensions} />
                     </Row>
 
 
