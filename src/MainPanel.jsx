@@ -114,7 +114,11 @@ export default function MainPanel(){
                         <QDa3DDrawing a={100} b={60} L={40} />   
                     </Row>
                     <Row>
-                        <TechnicalDrawing drawFunction={drawShape} dimensions={dimensions} />
+                        <TechnicalDrawing 
+                            drawFunction={drawShape} 
+                            dimensions={dimensions} 
+                            style={{ width: '800px', height: '800px' }}
+                        />
                     </Row>
 
 

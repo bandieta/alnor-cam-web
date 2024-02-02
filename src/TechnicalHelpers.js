@@ -24,31 +24,48 @@ const zoomToFit = (canvas) => {
     const bboxHeight = maxY - minY;
 
     // Calculate the scaling factor to fit the bounding box into the canvas
-    const scaleFactor = Math.min(canvas.width / bboxWidth, canvas.height / bboxHeight);
+    const scaleFactor = Math.min(canvas.width / bboxWidth, canvas.height / bboxHeight) / 1.1;
 
-    // Apply the scaling factor
-    canvas.zoomToPoint({ x: canvas.width / 2, y: canvas.height / 2 }, scaleFactor);
+    // Calculate the center point of the bounding box
+    const centerX = (minX + maxX) / 2;
+    const centerY = (minY + maxY) / 2;
+
+    // Apply the scaling factor and center the view
+    canvas.viewportTransform = [scaleFactor, 0, 0, scaleFactor, canvas.width / 2 - scaleFactor * centerX, canvas.height / 2 - scaleFactor * centerY];
+    canvas.renderAll();
 };
 
+
 const drawLine = (canvas, x1, y1, x2, y2, options = {}) => {
-    // Default options for the line
     const defaultOptions = {
         fill: 'transparent',
         stroke: 'black',
-        strokeWidth: 2,
+        strokeWidth: 1,
     };
 
-    // Merge default options with provided options
     const lineOptions = { ...defaultOptions, ...options };
 
-    // Create a line object
     const line = new fabric.Line([x1, y1, x2, y2], lineOptions);
 
-    // Add the line to the canvas
     canvas.add(line);
 
     // Return the created line object if needed
     return line;
 };
 
-export {zoomToFit, drawLine};
+// const parameters = { a: 500, b: 200, L: 100 };
+// const maxNorm = 400;
+//
+// const normalizedParams = normalizeParameters(parameters, maxNorm);
+// console.log(normalizedParams);
+function normalizeParameters(params, maxNorm) {
+    const scaleFactor = maxNorm / Math.max(...Object.values(params));
+
+    for (let key in params) {
+        params[key] *= scaleFactor;
+    }
+
+    return params;
+}
+
+export {zoomToFit, drawLine, normalizeParameters};
