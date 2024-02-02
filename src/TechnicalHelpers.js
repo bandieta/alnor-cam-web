@@ -51,4 +51,4 @@ const drawLine = (canvas, x1, y1, x2, y2, options = {}) => {
     return line;
 };
 
-export default {zoomToFit, drawLine};
+export {zoomToFit, drawLine};

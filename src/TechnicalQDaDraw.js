@@ -1,5 +1,5 @@
 import { fabric } from 'fabric';
-import zoomToFit from './TechnicalHelpers';
+import { zoomToFit, drawLine } from './TechnicalHelpers';
 
 
 const drawShape = (canvas, { a, b, L}) => {
